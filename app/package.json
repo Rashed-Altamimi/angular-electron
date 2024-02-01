@@ -9,5 +9,11 @@
   "main": "main.js",
   "private": true,
   "dependencies": {
+    "@types/mssql": "^9.1.1",
+    "crypto": "^1.0.1",
+    "mssql": "^10.0.1",
+    "node-xlsx": "^0.23.0",
+    "sqlite3": "^5.1.6",
+    "ts-stopwatch": "^0.0.4"
   }
 }

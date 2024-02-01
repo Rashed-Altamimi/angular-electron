@@ -5,15 +5,18 @@ import { Injectable } from '@angular/core';
 import { ipcRenderer, webFrame } from 'electron';
 import * as childProcess from 'child_process';
 import * as fs from 'fs';
-
+import { sqlite3 } from 'sqlite3';
+import * as mssql from 'mssql';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ElectronService {
   ipcRenderer!: typeof ipcRenderer;
   webFrame!: typeof webFrame;
   childProcess!: typeof childProcess;
   fs!: typeof fs;
+  sqlite3!: sqlite3;
+  sql!: typeof mssql;
 
   constructor() {
     // Conditional imports
@@ -22,6 +25,8 @@ export class ElectronService {
       this.webFrame = (window as any).require('electron').webFrame;
 
       this.fs = (window as any).require('fs');
+      this.sqlite3 = (window as any).require('sqlite3');
+      this.sql = (window as any).require('mssql');
 
       this.childProcess = (window as any).require('child_process');
       this.childProcess.exec('node -v', (error, stdout, stderr) => {
